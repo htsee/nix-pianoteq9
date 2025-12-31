@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "A flake for pianoteq9";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -10,16 +10,18 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      ver = "9.1.0";
+      verForFile = v: builtins.replaceStrings [ "." ] [ "" ] v;
     in
     {
 
       packages.${system}.default = pkgs.stdenv.mkDerivation rec {
         pname = "pianoteq_trial";
-        version = "9.1.0";
+        version = ver;
         src = pkgs.requireFile {
-          name = "pianoteq_trial_v910.tar.xz";
+          name = "pianoteq_trial_v${verForFile ver}.tar.xz";
           sha256 = "wCBTVFKZ7Nl5IEHFI3vyffVQdVtNrG3FLpxh6v9H6Ec=";
-          url = "https://www.modartt.com/try?file=pianoteq_trial_v910.tar.xz";
+          url = "https://www.modartt.com/try?file=pianoteq_trial_v${verForFile ver}.tar.xz";
         };
 
         nativeBuildInputs = with pkgs; [
@@ -37,10 +39,8 @@
         ];
 
         installPhase = ''
-          # runHook preInstall
           mkdir -p $out/bin
           mv -t $out/bin x86-64bit/Pianoteq\ 9
-          # runHook postInstall
         '';
       };
 
