@@ -39,12 +39,12 @@
         ];
 
         installPhase = ''
-                              mkdir -p $out/bin
-          										mkdir -p $out/lib/vst3
-          										mkdir -p $out/lib/lv2
-                              mv -t $out/bin x86-64bit/Pianoteq\ 9
-                    					mv -t $out/lib/vst3 x86-64bit/Pianoteq\ 9.vst3
-                    					mv -t $out/lib/lv2 x86-64bit/Pianoteq\ 9.lv2
+          mkdir -p $out/bin
+          mkdir -p $out/lib/vst3
+          mkdir -p $out/lib/lv2
+          mv -t $out/bin x86-64bit/Pianoteq\ 9
+          mv -t $out/lib/vst3 x86-64bit/Pianoteq\ 9.vst3
+          mv -t $out/lib/lv2 x86-64bit/Pianoteq\ 9.lv2
         '';
       };
 
