@@ -10,7 +10,7 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      ver = "9.1.0";
+      ver = "9.1.2";
       verForFile = v: builtins.replaceStrings [ "." ] [ "" ] v;
     in
     {
@@ -20,7 +20,7 @@
         version = ver;
         src = pkgs.requireFile {
           name = "pianoteq_trial_v${verForFile ver}.tar.xz";
-          sha256 = "wCBTVFKZ7Nl5IEHFI3vyffVQdVtNrG3FLpxh6v9H6Ec=";
+          sha256 = "d687cf2fa175d86bfe936ad905a74e6b9232ba4ba38babddc30f3bb9f74a8ccf";
           url = "https://www.modartt.com/try?file=pianoteq_trial_v${verForFile ver}.tar.xz";
         };
 
